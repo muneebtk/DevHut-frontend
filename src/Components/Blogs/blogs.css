@@ -1,0 +1,36 @@
+.grid1{
+    padding:0 4% ;
+}
+.card4{
+    width: 100%;
+    height: 300px;
+}
+.contentHead{
+    font-size: medium;
+}
+/* @media only screen and (max-width: 600px) {
+    .card4{
+        height: 250px;
+    }
+}
+@media only screen and (min-width:768px) {
+    .card4{
+        height: 275px;
+    }
+}
+@media only screen and (min-width: 992px){
+    .card4{
+        height: 275px;
+    }
+}
+@media only screen and (min-width: 1200px) {
+    .card4{
+        height: 280px;
+    }
+} */
+.blog_details{
+    /* display: flex; */
+    /* align-items: end; */
+    margin-top: auto;
+   
+}

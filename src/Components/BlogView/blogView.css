@@ -1,0 +1,20 @@
+.follow_button{
+    border-radius: 21px;
+    border: none;
+    background-color: rgb(194, 228, 46);
+    margin:10px 10px ;
+    height: 25px;
+    min-width: 70px;
+    font-size: 15px;
+    transition: .4s;
+    cursor: pointer;
+    
+}
+.follow_button:hover{
+    background-color:yellowgreen ;
+    
+}
+.userDetail{
+    display: flex;
+    flex-direction: row;
+}

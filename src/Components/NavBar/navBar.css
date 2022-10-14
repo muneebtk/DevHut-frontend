@@ -1,0 +1,30 @@
+.typo_nav{
+    font-size: medium;
+}
+.inputbase ::placeholder{
+    color: rgb(255, 255, 255);
+}
+.inputbase{
+    display: flex;
+    flex-direction: row;
+   
+}
+.searchfield{
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 5px;
+    padding-left: 4px;
+}
+@media screen and (min-width:750px){
+    .searchfield{
+        width: 300px;
+    }
+}
+@media screen and (max-width:520px){
+    .searchfield{
+        width: 100px;
+    }
+}
+.search_button{
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}

@@ -1,0 +1,19 @@
+.user_profile{
+    padding: 5px 10px 5px 25px;
+}
+
+.bloger_card{
+    margin-left: 10px;
+}
+@media only screen and (min-width: 650px){
+    .bloger_card{
+        margin-left: 50px;
+    }
+}
+.follower_list{
+    text-decoration: none;
+}
+.follower_list:hover{
+    text-decoration: underline;
+    cursor: pointer;
+}

@@ -1,0 +1,13 @@
+.paper{
+    max-width: 340px;
+    min-width: 280px;
+    margin: 20px auto;
+    padding: 10px;
+}
+.grid{
+    padding-top: 20px;
+}
+.typo{
+    padding-top: 10px;
+}
+
