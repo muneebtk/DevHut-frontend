@@ -24,7 +24,7 @@ function AdminBlogList() {
           Authorization: `Bearer ${authTokens ? authTokens.access : null}`,
         },
       };
-      const BASE_URL = "http://13.233.6.228";
+      const BASE_URL = "https://www.devhut.lappie.store";
     let AllBlogsList = ()=>{
         axios.get(BASE_URL+'/admin_panel/all_blogs/',config)
         .then ((response)=>{

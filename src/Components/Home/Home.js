@@ -15,7 +15,7 @@ import AppContext from "../../Context/AppContext";
 
 function Home() {
   let { blogs, allBlogs, singleBlogView } = useContext(AppContext);
-  const BASE_URL = "http://13.233.6.228";
+  const BASE_URL = "https://www.devhut.lappie.store";
 
   useEffect(() => {
     blogs();

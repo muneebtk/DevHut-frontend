@@ -17,7 +17,7 @@ import {
 import AdminHomeCard from "../AdminHomeCard/AdminHomeCard";
 
 function AdminHom() {
-  const BASE_URL = "http://13.233.6.228";
+  const BASE_URL = "https://www.devhut.lappie.store";
   let { authTokens } = useContext(AppContext);
   const config = {
     headers: {

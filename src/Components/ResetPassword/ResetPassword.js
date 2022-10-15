@@ -28,7 +28,7 @@ function ResetPassword() {
   let resetPassword = async (e) => {
     e.preventDefault();
     await axios
-      .post(`http://127.0.0.1:8000/user/reset_password/${mg}/${token}/`, {
+      .post(`https://www.devhut.lappie.store/user/reset_password/${mg}/${token}/`, {
         password: e.target.password.value,
         confirm_password: e.target.confirm_password.value,
       })

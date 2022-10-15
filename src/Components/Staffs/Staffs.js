@@ -13,7 +13,7 @@ import {
   import AuthContext from "../../Context/AuthContext";
 
 function Staffs() {
-    const BASE_URL = "http://13.233.6.228";
+    const BASE_URL = "https://www.devhut.lappie.store";
     let { authTokens } = useContext(AuthContext);
     let [writersData, setWritersData] = useState();
     const config = {

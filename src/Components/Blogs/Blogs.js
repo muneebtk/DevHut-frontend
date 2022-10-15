@@ -22,7 +22,7 @@ import AuthContext from "../../Context/AuthContext";
 function Blogs() {
   let { allBlogs, singleBlogView } = useContext(AppContext);
   let { authTokens } = useContext(AuthContext);
-  const BASE_URL = "http://13.233.6.228";
+  const BASE_URL = "https://www.devhut.lappie.store";
   let [searchParams, setSearchParams] = useSearchParams();
   let [followingBlogsData, setFollowingBlogsData] = useState();
   const config = {

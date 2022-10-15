@@ -35,7 +35,7 @@ function Write() {
     }, 5000);
   }, []);
   let navigate = useNavigate()
-  const BASE_URL = 'http://13.233.6.228'
+  const BASE_URL = 'https://www.devhut.lappie.store'
 
   let WriteBlog = async (e) => {
     e.preventDefault();

@@ -13,7 +13,7 @@ import React, { useContext, useEffect, useState } from "react";
 import AuthContext from "../../Context/AuthContext";
 
 function Users() {
-  const BASE_URL = "http://13.233.6.228";
+  const BASE_URL = "https://www.devhut.lappie.store";
   let { authTokens } = useContext(AuthContext);
   let [usersData, setUsersData] = useState();
   let [userState, setUserState] = useState();

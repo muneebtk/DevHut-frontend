@@ -14,7 +14,7 @@ import { okaidia } from '@uiw/codemirror-theme-okaidia';
 
 
 function Compiler() {
-  const BASE_URL = "http://13.233.6.228";
+  const BASE_URL = "https://www.devhut.lappie.store";
   const [code, setCode] = useState('print("Hello world")');
   let [codeOutput, setCodeOutput] = useState();
 

@@ -22,7 +22,7 @@ function EditAuthorProfile() {
   const [errorResponseMsg, setErrorResponseMsg] = useState(null);
   const [fieldError, setFieldError] = useState();
   let [image, setImage] = useState();
-  const BASE_URL = "http://13.233.6.228";
+  const BASE_URL = "https://www.devhut.lappie.store";
   let [firstName, setFirstName] = useState();
   let [lastName, setLastName] = useState();
   let [email, setEmail] = useState();

@@ -14,7 +14,7 @@ import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined
 import { useParams } from "react-router-dom";
 
 function SearchResult() {
-  const BASE_URL = "http://13.233.6.228";
+  const BASE_URL = "https://www.devhut.lappie.store";
   let parms = useParams();
   const slugs = parms.slug;
   let { searchBlogs } = useContext(AppContext);

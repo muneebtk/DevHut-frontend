@@ -42,7 +42,7 @@ function BlogView() {
     headers: { Authorization: `Bearer ${authTokens && authTokens.access}` },
   };
 
-  const BASE_URL = "http://13.233.6.228";
+  const BASE_URL = "https://www.devhut.lappie.store";
   let {
     singleBlogData,
     singleBlogView,

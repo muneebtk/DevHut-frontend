@@ -32,7 +32,7 @@ function AuthorProfile() {
  
   let navigate = useNavigate();
 
-  const BASE_URL = "http://13.233.6.228";
+  const BASE_URL = "https://www.devhut.lappie.store";
  
   let params = useParams();
   let p = params.id;

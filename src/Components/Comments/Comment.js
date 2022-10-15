@@ -51,7 +51,7 @@ function Comment() {
 
     let { singleBlogData, postComment, singleBlogView } = useContext(AppContext);
     let { user } = useContext(AuthContext);
-    const BASE_URL = "http://13.233.6.228";
+    const BASE_URL = "https://www.devhut.lappie.store";
     let navigate = useNavigate();
     let SubmitComment = (e) => {
         e.preventDefault();
