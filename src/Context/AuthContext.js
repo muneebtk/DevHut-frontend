@@ -24,7 +24,7 @@ export const AuthProvider = ({children})=>{
     let [loading,setLoading] = useState()
    
 
-    const BASE_URL = 'http://13.233.6.228/'
+    const BASE_URL = 'https://www.devhut.lappie.store/'
     const axiosInstance = axios.create({ baseURL: BASE_URL })
 
     const requestRefresh = async (refresh) => {
@@ -38,7 +38,7 @@ export const AuthProvider = ({children})=>{
 
     let loginUser = async (email,password) =>{
         setLoading(true)
-        let response = await fetch('http://127.0.0.1:8000/user/login/',{
+        let response = await fetch('https://www.devhut.lappie.store/user/login/',{
             method:'POST',
             headers:{
                 'Content-Type':'application/json'

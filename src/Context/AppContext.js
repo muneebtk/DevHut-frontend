@@ -11,14 +11,13 @@ export const AppProvider =({children})=> {
     const [allBlogs,setAllBlogs] = useState([])
     const [singleBlogData,setSingleBlogData] = useState()
     const navigate = useNavigate()
-    const BASE_URL = 'http://13.233.6.228'
+    const BASE_URL = 'https://www.devhut.lappie.store/'
     
     const [prms,setPrms] = useState()
     const [authorProfileData,setAuthorProfileData] = useState()  
     const [userId,setUserId] = useState()
     let [loading,setLoading] = useState()
     const [followRes, setFollowRes] = useState();
-    // let { authTokens } = useContext(AuthContext);
     const [searchData,setSearchData] = useState()
     
 
@@ -92,7 +91,6 @@ export const AppProvider =({children})=> {
     }
 // follow an author
     let FollowAuthor = async (user_id) => {
-      console.log('dfdf')
         await axios
           .post(BASE_URL +`/author/profile/${user_id}/`,{}, config)
           .then((response) => {
@@ -143,7 +141,6 @@ export const AppProvider =({children})=> {
         }
       }  
    
-
     let contextData = {
         blogs:blogs,
         allBlogs:allBlogs,
@@ -164,7 +161,6 @@ export const AppProvider =({children})=> {
         titleText:titleText,
         makeTitle:makeTitle,
         isAuthorUser:isAuthorUser,
-        // isUser:isUser,
         isAuthor:isAuthor,
     }
     return (
