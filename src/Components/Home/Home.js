@@ -12,11 +12,10 @@ import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined
 import "./home.css";
 import theme from "../../Utils/theme";
 import AppContext from "../../Context/AppContext";
-import { useNavigate } from "react-router-dom";
 
 function Home() {
   let { blogs, allBlogs, singleBlogView } = useContext(AppContext);
-  const BASE_URL = "http://127.0.0.1:8000";
+  const BASE_URL = "http://13.233.6.228";
 
   useEffect(() => {
     blogs();

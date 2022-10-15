@@ -24,7 +24,7 @@ function AdminBlogList() {
           Authorization: `Bearer ${authTokens ? authTokens.access : null}`,
         },
       };
-      const BASE_URL = "http://127.0.0.1:8000";
+      const BASE_URL = "http://13.233.6.228";
     let AllBlogsList = ()=>{
         axios.get(BASE_URL+'/admin_panel/all_blogs/',config)
         .then ((response)=>{

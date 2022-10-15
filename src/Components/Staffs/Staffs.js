@@ -13,10 +13,9 @@ import {
   import AuthContext from "../../Context/AuthContext";
 
 function Staffs() {
-    const BASE_URL = "http://127.0.0.1:8000";
+    const BASE_URL = "http://13.233.6.228";
     let { authTokens } = useContext(AuthContext);
     let [writersData, setWritersData] = useState();
-    let [userState, setUserState] = useState();
     const config = {
       headers: {
         Authorization: `Bearer ${authTokens ? authTokens.access : null}`,
@@ -32,9 +31,7 @@ function Staffs() {
         AllWriters();
       }, []);
       let BlockOrUnblockUser = (id) => {
-        console.log(id);
         axios.patch(BASE_URL + `/admin_panel/writers/${id}/`).then((response) => {
-          // setUserState(response.data);
           AllWriters()
         });
       };

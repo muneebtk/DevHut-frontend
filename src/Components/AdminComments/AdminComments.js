@@ -13,7 +13,7 @@ import React, { useContext, useEffect, useState } from "react";
 import AuthContext from "../../Context/AuthContext";
 function AdminComments() {
   let { authTokens } = useContext(AuthContext);
-  const BASE_URL = "http://127.0.0.1:8000";
+  const BASE_URL = "http://13.233.6.228";
   const config = {
     headers: {
       Authorization: `Bearer ${authTokens ? authTokens.access : null}`,

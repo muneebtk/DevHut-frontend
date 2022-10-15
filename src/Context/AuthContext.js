@@ -24,7 +24,7 @@ export const AuthProvider = ({children})=>{
     let [loading,setLoading] = useState()
    
 
-    const BASE_URL = 'http://127.0.0.1:8000'
+    const BASE_URL = 'http://13.233.6.228/'
     const axiosInstance = axios.create({ baseURL: BASE_URL })
 
     const requestRefresh = async (refresh) => {

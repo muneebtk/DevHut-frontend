@@ -32,7 +32,7 @@ function AuthorProfile() {
  
   let navigate = useNavigate();
 
-  const BASE_URL = "http://127.0.0.1:8000";
+  const BASE_URL = "http://13.233.6.228";
  
   let params = useParams();
   let p = params.id;

@@ -14,7 +14,7 @@ import { okaidia } from '@uiw/codemirror-theme-okaidia';
 
 
 function Compiler() {
-  const BASE_URL = "http://127.0.0.1:8000";
+  const BASE_URL = "http://13.233.6.228";
   const [code, setCode] = useState('print("Hello world")');
   let [codeOutput, setCodeOutput] = useState();
 

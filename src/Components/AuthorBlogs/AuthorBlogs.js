@@ -15,7 +15,7 @@ import AppContext from "../../Context/AppContext";
 import './authorBlogs.css';
 
 function AuthorBlogs() {
-  const BASE_URL = "http://127.0.0.1:8000";
+  const BASE_URL = "http://13.233.6.228";
 
   let { authorProfileData, singleBlogView } = useContext(AppContext);
   return (

@@ -22,7 +22,7 @@ function EditAuthorProfile() {
   const [errorResponseMsg, setErrorResponseMsg] = useState(null);
   const [fieldError, setFieldError] = useState();
   let [image, setImage] = useState();
-  const BASE_URL = "http://127.0.0.1:8000";
+  const BASE_URL = "http://13.233.6.228";
   let [firstName, setFirstName] = useState();
   let [lastName, setLastName] = useState();
   let [email, setEmail] = useState();

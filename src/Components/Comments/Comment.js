@@ -12,17 +12,14 @@ import {
 import { Container } from "@mui/system";
 import React, { useState, useContext, useEffect } from "react";
 import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
-import ThumbUpOffAltIcon from "@mui/icons-material/ThumbUpOffAlt";
 import "./comment.css";
 import AppContext from "../../Context/AppContext";
 import AuthContext from "../../Context/AuthContext";
-import PropTypes from "prop-types";
 import Backdrop from "@mui/material/Backdrop";
 import Modal from "@mui/material/Modal";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-// web.cjs is required for IE11 support
-// import { useSpring, animated } from 'react-spring/web.cjs';
+
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 
 function Comment() {
@@ -54,7 +51,7 @@ function Comment() {
 
     let { singleBlogData, postComment, singleBlogView } = useContext(AppContext);
     let { user } = useContext(AuthContext);
-    const BASE_URL = "http://127.0.0.1:8000";
+    const BASE_URL = "http://13.233.6.228";
     let navigate = useNavigate();
     let SubmitComment = (e) => {
         e.preventDefault();

@@ -17,7 +17,7 @@ import BlogsCategory from "../BlogsCategory/BlogCategory";
 function CategoryBlogs() {
   let { singleBlogView ,blogs,categoryData,CategoryView,titleText,makeTitle} = useContext(AppContext);
   let { slug } = useParams();
-  const BASE_URL = "http://127.0.0.1:8000";
+  const BASE_URL = "http://13.233.6.228";
   useEffect(() => {
     CategoryView(slug);
     makeTitle(slug)

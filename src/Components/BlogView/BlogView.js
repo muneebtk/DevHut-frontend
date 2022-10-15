@@ -42,7 +42,7 @@ function BlogView() {
     headers: { Authorization: `Bearer ${authTokens && authTokens.access}` },
   };
 
-  const BASE_URL = "http://127.0.0.1:8000";
+  const BASE_URL = "http://13.233.6.228";
   let {
     singleBlogData,
     singleBlogView,

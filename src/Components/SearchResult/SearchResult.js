@@ -14,11 +14,9 @@ import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined
 import { useParams } from "react-router-dom";
 
 function SearchResult() {
-  const BASE_URL = "http://127.0.0.1:8000";
+  const BASE_URL = "http://13.233.6.228";
   let parms = useParams();
-  console.log(parms);
   const slugs = parms.slug;
-  console.log(slugs, "key");
   let { searchBlogs } = useContext(AppContext);
 
   useEffect(() => {
@@ -30,7 +28,6 @@ function SearchResult() {
     !searchData ? (searchData = 0) : (searchData = searchData);
   }
 
-  console.log(searchData, "search data");
   return (
     <div style={{minHeight:'80vh'}}>
       <Typography

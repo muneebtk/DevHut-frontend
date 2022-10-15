@@ -22,7 +22,7 @@ import AuthContext from "../../Context/AuthContext";
 function Blogs() {
   let { allBlogs, singleBlogView } = useContext(AppContext);
   let { authTokens } = useContext(AuthContext);
-  const BASE_URL = "http://127.0.0.1:8000";
+  const BASE_URL = "http://13.233.6.228";
   let [searchParams, setSearchParams] = useSearchParams();
   let [followingBlogsData, setFollowingBlogsData] = useState();
   const config = {

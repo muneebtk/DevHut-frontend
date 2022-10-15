@@ -11,7 +11,7 @@ export const AppProvider =({children})=> {
     const [allBlogs,setAllBlogs] = useState([])
     const [singleBlogData,setSingleBlogData] = useState()
     const navigate = useNavigate()
-    const BASE_URL = 'http://127.0.0.1:8000'
+    const BASE_URL = 'http://13.233.6.228'
     
     const [prms,setPrms] = useState()
     const [authorProfileData,setAuthorProfileData] = useState()  

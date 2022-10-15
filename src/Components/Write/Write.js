@@ -35,7 +35,7 @@ function Write() {
     }, 5000);
   }, []);
   let navigate = useNavigate()
-  const BASE_URL = 'http://127.0.0.1:8000'
+  const BASE_URL = 'http://13.233.6.228'
 
   let WriteBlog = async (e) => {
     e.preventDefault();
@@ -66,7 +66,8 @@ function Write() {
 
     await axios.post("blogs/", form_data, config).then((response) => {
       if (response.status === 201) {
-        setSuccessResponseMsg(response.data);
+        setSuccessResponseMsg(response.data)
+        navigate('/')
       } else {
         setErrorResponseMsg(response.data);
       }

@@ -13,11 +13,10 @@ import React, { useContext, useEffect, useState } from "react";
 import AuthContext from "../../Context/AuthContext";
 
 function Users() {
-  const BASE_URL = "http://127.0.0.1:8000";
+  const BASE_URL = "http://13.233.6.228";
   let { authTokens } = useContext(AuthContext);
   let [usersData, setUsersData] = useState();
   let [userState, setUserState] = useState();
-  // let [searchKey,setSearchKey] = useState()
   const config = {
     headers: {
       Authorization: `Bearer ${authTokens ? authTokens.access : null}`,
