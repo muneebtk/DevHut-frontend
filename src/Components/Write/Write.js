@@ -125,10 +125,7 @@ function Write() {
                   <Typography variant="body2">Upload image</Typography>
                 </label>
                
-               <Button variant="contained" component="label" size="small">
-                  Upload
-                  <input hidden accept="image/*" multiple onChange={(e) => setImage(e.target.files[0])} type="file" />
-                </Button>
+                <input hidden accept="image/*" multiple onChange={(e) => setImage(e.target.files[0])} type="file" />
 
                 {imageError ? (
                   <Typography color="red" variant="caption">
@@ -153,10 +150,6 @@ function Write() {
                     {titleError}
                   </Typography>
                 ) : null}
-
-                {/* 
-            <label  htmlFor=""><Typography style={{paddingTop:'10px'}} variant='body2'>Enter subtitle1</Typography></label>
-            <TextField name='subtitle1' type='text' style={{margin:''}} fullWidth={true}></TextField> */}
 
                 <Typography style={{ paddingTop: "10px" }} variant="body2">
                   Enter content

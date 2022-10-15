@@ -19,7 +19,6 @@ export const AppProvider =({children})=> {
     let [loading,setLoading] = useState()
     const [followRes, setFollowRes] = useState();
     const [searchData,setSearchData] = useState()
-    
 
     const {authTokens} = useContext(AuthContext);
     
