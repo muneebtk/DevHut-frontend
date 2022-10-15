@@ -64,7 +64,7 @@ function AuthorProfile() {
                     component="img"
                     alt="author"
                     height="150"
-                    image={BASE_URL + obj.author.image}
+                    image={obj.author.image}
                   />
                 ) : (
                   <AccountCircleIcon sx={{ width: 120, height: 120 }} />
@@ -198,7 +198,7 @@ function AuthorProfile() {
                                 }}
                                 component="img"
                                 height="25"
-                                image={BASE_URL + obj.user_from.image}
+                                image={obj.user_from.image}
                                 alt="Paella dish"
                               />
                             ) : (
@@ -224,7 +224,7 @@ function AuthorProfile() {
                                 }}
                                 component="img"
                                 height="25"
-                                image={BASE_URL + obj.user_from.image}
+                                image={ obj.user_from.image}
                                 alt="Paella dish"
                               />
                             ) : (

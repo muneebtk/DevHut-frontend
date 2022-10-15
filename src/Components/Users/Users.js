@@ -35,19 +35,9 @@ function Users() {
       AllUsers();
     });
   };
-  // let SearchUsers = (e)=>{
-  //   e.preventDefault()
-  //   axios.get(BASE_URL+`/admin_search_users/?search=${searchKey}`,config)
-  //   .then((response)=>{
-  //     console.log(response.data);
-  //   })
-  // }
+ 
   return (
     <div style={{ minHeight: "80vh" }}>
-      {/* <form onSubmit={SearchUsers}>
-        <input type='text' name='search_key' onChange={(e)=>setSearchKey(e.target.value)} />
-        <button type="submit">search</button>
-      </form> */}
       <TableContainer component={Paper}>
         <Table sx={{ width: "100%" }} aria-label="simple table">
           <TableHead>

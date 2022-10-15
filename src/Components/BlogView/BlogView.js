@@ -157,7 +157,7 @@ function BlogView() {
                   sx={{ width: "35px", borderRadius: "50%" }}
                   component="img"
                   height="35"
-                  image={BASE_URL + singleBlogData.author.image}
+                  image={ singleBlogData.author.image}
                   alt="Paella dish"
                 />
               ) : (
@@ -250,7 +250,7 @@ function BlogView() {
               <CardMedia
                 component="img"
                 height="350"
-                image={BASE_URL + singleBlogData.image}
+                image={singleBlogData.image}
                 alt="Paella dish"
               />
               <Typography variant="h4" style={{ fontWeight: "" }}>

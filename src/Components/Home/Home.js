@@ -43,7 +43,7 @@ function Home() {
                           sx={{ width: "30px", borderRadius: "50%" }}
                           component="img"
                           height="30"
-                          image={BASE_URL + blog.author.image}
+                          image={ blog.author.image}
                           alt="Author Image"
                         />
                       ) : (

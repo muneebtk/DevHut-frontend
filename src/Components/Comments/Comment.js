@@ -271,7 +271,7 @@ function Comment() {
                               sx={{ width: "35px", borderRadius: "50%" }}
                               component="img"
                               height="35"
-                              image={BASE_URL + obj.user.image}
+                              image={ obj.user.image}
                               alt="Paella dish"
                             />
                           ) : (

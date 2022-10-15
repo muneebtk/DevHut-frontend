@@ -2,15 +2,9 @@ import { Box, Button, Typography } from "@mui/material";
 import axios from "axios";
 import React, { useState } from "react";
 import CodeMirror from "@uiw/react-codemirror";
-
 import "./Compiler.css";
 import { python } from '@codemirror/lang-python'
 import { dracula } from '@uiw/codemirror-theme-dracula';
-import { sublime } from '@uiw/codemirror-theme-sublime';
-import { okaidia } from '@uiw/codemirror-theme-okaidia';
-// var React = require('react');
-// require('codemirror/mode/python/python');
-
 
 
 function Compiler() {
@@ -48,9 +42,6 @@ function Compiler() {
           onChange={(value) => setCode(value)}
           options={{
           theme:{dracula},
-            // keyMap: "sublime",
-          
-          // mode="python"
           
           }}
           value={code}

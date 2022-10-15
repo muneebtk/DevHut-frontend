@@ -92,7 +92,7 @@ function Blogs() {
                       <CardMedia
                         component="img"
                         height="140"
-                        image={BASE_URL + blog.image}
+                        image={ blog.image}
                         alt="Paella dish"
                       />
                       <div
@@ -104,7 +104,7 @@ function Blogs() {
                             sx={{ width: "35px", borderRadius: "50%" }}
                             component="img"
                             height="35"
-                            image={BASE_URL + blog.author.image}
+                            image={ blog.author.image}
                             alt="author"
                           />
                         ) : (
@@ -174,7 +174,7 @@ function Blogs() {
                     <CardMedia
                       component="img"
                       height="140"
-                      image={BASE_URL + blog.image}
+                      image={ blog.image}
                       alt="Paella dish"
                     />
                     <div className="b_details" style={{ padding: " 2px 10px" }}>
@@ -183,7 +183,7 @@ function Blogs() {
                           sx={{ width: "35px", borderRadius: "50%" }}
                           component="img"
                           height="35"
-                          image={BASE_URL + blog.author.image}
+                          image={ blog.author.image}
                           alt="Paella dish"
                         />
                       ) : (

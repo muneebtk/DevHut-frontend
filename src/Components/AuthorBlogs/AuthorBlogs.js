@@ -38,12 +38,11 @@ function AuthorBlogs() {
                   <CardActionArea onClick={() => singleBlogView(obj.id)}>
                     <Box
                       className="box2"
-                      // sx={{ display: "flex", flexDirection: "column" }}
                     >
                       <CardMedia
                         component="img"
                         height="140"
-                        image={BASE_URL + obj.image}
+                        image={obj.image}
                         alt=""
                       />
                       <div
@@ -54,7 +53,7 @@ function AuthorBlogs() {
                           <CardMedia sx={{width:'35px',borderRadius:'50%'}}
                           component="img"
                           height="35"
-                          image={BASE_URL+obj.author.image}
+                          image={obj.author.image}
                           alt=""
                         />:
                             <AccountCircleOutlinedIcon/>

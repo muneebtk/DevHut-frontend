@@ -46,7 +46,7 @@ function CategoryBlogs() {
                       <CardMedia
                         component="img"
                         height="150"
-                        image={BASE_URL + blog.image}
+                        image={ blog.image}
                         alt="blog image"
                       />
                       <div
@@ -57,7 +57,7 @@ function CategoryBlogs() {
                         <CardMedia sx={{width:'35px',borderRadius:'50%'}}
                         component="img"
                         height="35"
-                        image={BASE_URL+blog.author.image}
+                        image={blog.author.image}
                         alt="blog image"
                       />:
                           <AccountCircleOutlinedIcon/>

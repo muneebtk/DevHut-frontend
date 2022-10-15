@@ -37,7 +37,6 @@ function AdminBlogList() {
 
     let BlockOrUnblockBlog = (id) => {
       axios.put(BASE_URL + `/admin_panel/block_or_unblock_blog/${id}/`).then((response) => {
-        // setBlogState(response.data);
         AllBlogsList()
       });
     };

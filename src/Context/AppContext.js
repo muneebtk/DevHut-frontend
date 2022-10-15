@@ -11,7 +11,7 @@ export const AppProvider =({children})=> {
     const [allBlogs,setAllBlogs] = useState([])
     const [singleBlogData,setSingleBlogData] = useState()
     const navigate = useNavigate()
-    const BASE_URL = 'https://www.devhut.lappie.store/'
+    const BASE_URL = 'https://www.devhut.lappie.store'
     
     const [prms,setPrms] = useState()
     const [authorProfileData,setAuthorProfileData] = useState()  
@@ -75,7 +75,6 @@ export const AppProvider =({children})=> {
     let AuthorProfile =async (userid)=>{
         setLoading(true)
         setUserId(userid)
-        console.log('author Profile');
         await axios.get(BASE_URL+`/author/profile/${userid}/`)
         .then ((response)=>{
             if (response.status===200){
@@ -125,7 +124,7 @@ export const AppProvider =({children})=> {
         });
       };
       let [titleText,setTitleText] = useState([])
-
+      // create category name by getting value from address bar
       let makeTitle = (slug) =>{
         if (slug){
           var words = slug.split('-');
