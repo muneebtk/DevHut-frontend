@@ -46,7 +46,7 @@ export const AuthProvider = ({ children }) => {
 
   let loginUser = async (email, password) => {
     setLoading(true);
-    let response = await fetch("http://127.0.0.1:8000/user/login/", {
+    let response = await fetch("https://www.devhut.lappie.store/user/login/", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
