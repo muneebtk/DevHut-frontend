@@ -8,21 +8,15 @@ import {
   ThemeProvider,
   Typography,
 } from "@mui/material";
-import axios from "axios";
+import axios from '../../Utils/axios'
 import React, { useContext, useEffect, useState } from "react";
 import theme from "../../Utils/theme";
-import { Navigate, useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import AuthContext from "../../Context/AuthContext";
 
 function EditAuthorProfile() {
-  const [imageError, setImageError] = useState();
-  const [titleError, setTitleError] = useState();
-  const [contentError, setContentError] = useState();
-  const [successResponseMsg, setSuccessResponseMsg] = useState(null);
-  const [errorResponseMsg, setErrorResponseMsg] = useState(null);
   const [fieldError, setFieldError] = useState();
   let [image, setImage] = useState();
-  const BASE_URL = "https://www.devhut.lappie.store";
   let [firstName, setFirstName] = useState();
   let [lastName, setLastName] = useState();
   let [email, setEmail] = useState();
@@ -31,7 +25,6 @@ function EditAuthorProfile() {
   let { authTokens } = useContext(AuthContext);
   const [resStatusSuccess, setResStatusSuccess] = useState();
   const [resStatusError, setResStatusError] = useState();
-  const [authorEditDetails, setAuthorEditDetails] = useState();
   let x = params.id;
   const config = {
     headers: {
@@ -45,16 +38,14 @@ function EditAuthorProfile() {
   // fetching author details
   let getUserProfileDetails = async () => {
     axios
-      .get(BASE_URL + `/edit_author_profile/${x}/`, config)
+      .get( `/edit_author_profile/${x}/`, config)
       .then((response) => {
         if (response.status === 200) {
-          // setAuthorEditDetails(response.data)
           setFirstName(response.data.first_name);
           setLastName(response.data.last_name);
           setEmail(response.data.email);
           setAboutUser(response.data.about);
         } else {
-          // setGetDetailsRes(response.data)
         }
       })
       .catch(() => {
@@ -97,7 +88,7 @@ function EditAuthorProfile() {
     form_data.append("about", aboutUser);
 
     axios
-      .put(BASE_URL + `/edit_author_profile/${x}/`, form_data, config)
+      .put( `/edit_author_profile/${x}/`, form_data, config)
       .then((response) => {
         if (response.status === 200) {
           setResStatusSuccess(response.data);

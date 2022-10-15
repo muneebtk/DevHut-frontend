@@ -8,12 +8,11 @@ import {
   TableRow,
   Button,
 } from "@mui/material";
-import axios from "axios";
+import axios from '../../Utils/axios'
 import React, { useContext, useEffect, useState } from "react";
 import AuthContext from "../../Context/AuthContext";
 
 function Users() {
-  const BASE_URL = "https://www.devhut.lappie.store";
   let { authTokens } = useContext(AuthContext);
   let [usersData, setUsersData] = useState();
   let [userState, setUserState] = useState();
@@ -23,7 +22,7 @@ function Users() {
     },
   };
   let AllUsers = () => {
-    axios.get(BASE_URL + "/admin_panel/users/", config).then((response) => {
+    axios.get( "/admin_panel/users/", config).then((response) => {
       setUsersData(response.data);
     });
   };
@@ -31,7 +30,7 @@ function Users() {
     AllUsers();
   }, []);
   let BlockOrUnblockUser = (id) => {
-    axios.patch(BASE_URL + `/admin_panel/users/${id}/`,{},config).then((response) => {
+    axios.patch( `/admin_panel/users/${id}/`,{},config).then((response) => {
       AllUsers();
     });
   };

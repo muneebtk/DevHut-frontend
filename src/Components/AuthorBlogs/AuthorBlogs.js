@@ -15,7 +15,6 @@ import AppContext from "../../Context/AppContext";
 import './authorBlogs.css';
 
 function AuthorBlogs() {
-  const BASE_URL = "https://www.devhut.lappie.store";
 
   let { authorProfileData, singleBlogView } = useContext(AppContext);
   return (

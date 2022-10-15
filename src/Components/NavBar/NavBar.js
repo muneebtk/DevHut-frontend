@@ -57,6 +57,7 @@ function NavBar() {
     { name: "Blog Comments", path: "/admin_panel/blog_comments/" },
     { name: "Python Compiler", path: "/python-compiler/" },
     { name: "Profile", path: `/author/profile/${user && user.user_id}/` },
+    { name: "Write", path: "/write" },
   ];
   let pages =
     user?.is_super_admin && user.is_staff

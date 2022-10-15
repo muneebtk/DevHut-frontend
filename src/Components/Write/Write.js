@@ -35,7 +35,6 @@ function Write() {
     }, 5000);
   }, []);
   let navigate = useNavigate()
-  const BASE_URL = 'https://www.devhut.lappie.store'
 
   let WriteBlog = async (e) => {
     e.preventDefault();
@@ -64,7 +63,7 @@ function Write() {
     form_data.append("category", e.target.category.value);
     form_data.append("read_time", e.target.read_time.value);
 
-    await axios.post("blogs/", form_data, config).then((response) => {
+    await axios.post("/blogs/", form_data, config).then((response) => {
       if (response.status === 201) {
         setSuccessResponseMsg(response.data)
         navigate('/')
@@ -120,12 +119,12 @@ function Write() {
                     {errorResponseMsg}
                   </Alert>
                 ) : null}
-
-                <label htmlFor="">
-                  <Typography variant="body2">Upload image</Typography>
-                </label>
                
-                <input hidden accept="image/*" multiple onChange={(e) => setImage(e.target.files[0])} type="file" />
+                <Typography variant="body2">Select image</Typography>
+                <input
+                  type="file"
+                  onChange={(e) => setImage(e.target.files[0])}
+                /><br/>
 
                 {imageError ? (
                   <Typography color="red" variant="caption">

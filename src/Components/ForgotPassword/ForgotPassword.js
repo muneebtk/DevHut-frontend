@@ -35,7 +35,7 @@ function ForgotPassword() {
 
   let forgotPassword = async (email) => {
     await axios
-      .post("user/forgot_password/", {
+      .post("/user/forgot_password/", {
         email: email,
       })
       .then((response) => {

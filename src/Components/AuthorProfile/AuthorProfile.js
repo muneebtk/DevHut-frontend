@@ -30,10 +30,7 @@ function AuthorProfile() {
     isAuthorUser(p);
   }, []);
  
-  let navigate = useNavigate();
-
-  const BASE_URL = "https://www.devhut.lappie.store";
- 
+  let navigate = useNavigate(); 
   let params = useParams();
   let p = params.id;
 
@@ -122,50 +119,6 @@ function AuthorProfile() {
               >Follow
               </button>
                 }
-
-                  
-                  {/* {followRes ? (
-                    followRes.status ? (
-                      <button
-                        onClick={() => FollowAuthor(obj.author.id)}
-                        className="follow_button"
-                      >
-                        UnFollow1
-                      </button>
-                    ) : (
-                      <button
-                        onClick={() => FollowAuthor(obj.author.id)}
-                        className="follow_button"
-                      >
-                        Follow
-                      </button>
-                    )
-                  ) : isUser ? (
-                    isUser.is_followed ? (
-                      <button
-                        onClick={() => FollowAuthor(obj.author.id)}
-                        className="follow_button"
-                      >
-                        UnFollow
-                      </button>
-                    ) : (
-                      <button
-                        onClick={() => FollowAuthor(obj.author.id)}
-                        className="follow_button"
-                      >
-                        Follow
-                      </button>
-                    )
-                  ) : isAuthor ? (
-                    <Button onClick={()=>navigate(`/author/profile/edit/${obj.author.id}/`)}>edit profile</Button>
-                  ) : (
-                    <button
-                      onClick={() => FollowAuthor(obj.author.id)}
-                      className="follow_button"
-                    >
-                      Follow
-                    </button>
-                  )} */}
                 </CardActions>
                 <Typography>About Author:</Typography>
                 <hr style={{ width: "30%" }} />

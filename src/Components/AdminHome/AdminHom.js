@@ -3,7 +3,7 @@ import React, { useContext, useEffect, useState } from "react";
 import GroupIcon from "@mui/icons-material/Group";
 import SupervisedUserCircleIcon from "@mui/icons-material/SupervisedUserCircle";
 import LibraryBooksIcon from "@mui/icons-material/LibraryBooks";
-import axios from "axios";
+import axios from "../../Utils/axios";
 import AppContext from "../../Context/AppContext";
 import {
   BarChart,
@@ -17,7 +17,6 @@ import {
 import AdminHomeCard from "../AdminHomeCard/AdminHomeCard";
 
 function AdminHom() {
-  const BASE_URL = "https://www.devhut.lappie.store";
   let { authTokens } = useContext(AppContext);
   const config = {
     headers: {
@@ -32,7 +31,7 @@ function AdminHom() {
   }, []);
 
   let AdminHome = () => {
-    axios.get(BASE_URL + "/admin_panel/home/").then((response) => {
+    axios.get("/admin_panel/home/", config).then((response) => {
       if (response.status === 200) {
         setHomeResData(response.data);
         setUsersChart(response.data.chart);
@@ -42,9 +41,23 @@ function AdminHom() {
   };
 
   return (
-    <div style={{minHeight:'80vh',width:'100%',position:'relative',margin:'auto'}}>
-  <Grid spacing={3}>
-        <div style={{ margin: "10px auto", display: "flex", flexWrap: "wrap",width:'100%' }}>
+    <div
+      style={{
+        minHeight: "80vh",
+        width: "100%",
+        position: "relative",
+        margin: "auto",
+      }}
+    >
+      <Grid spacing={3}>
+        <div
+          style={{
+            margin: "10px auto",
+            display: "flex",
+            flexWrap: "wrap",
+            width: "100%",
+          }}
+        >
           <Card sx={{ height: "90px", width: "200px", margin: "5px" }}>
             <Grid item xs={12} lg={4}>
               <div
@@ -110,11 +123,14 @@ function AdminHom() {
             count={homeResData && homeResData.active_users}
           />
           <AdminHomeCard
-              text= "Non Active Users"
-              count= {homeResData && homeResData.non_active_users}            
+            text="Non Active Users"
+            count={homeResData && homeResData.non_active_users}
           />
-          
-          <AdminHomeCard text='Blocked Blogs' count={homeResData&&homeResData.blocked_blogs} />
+
+          <AdminHomeCard
+            text="Blocked Blogs"
+            count={homeResData && homeResData.blocked_blogs}
+          />
           <br />
           <div
             style={{ display: "flex", flexWrap: "wrap", margin: "20px auto" }}

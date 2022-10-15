@@ -8,12 +8,12 @@ import {
   TableRow,
   Button,
 } from "@mui/material";
-import axios from "axios";
+import axios from '../../Utils/axios'
+
 import React, { useContext, useEffect, useState } from "react";
 import AuthContext from "../../Context/AuthContext";
 function AdminComments() {
   let { authTokens } = useContext(AuthContext);
-  const BASE_URL = "https://www.devhut.lappie.store";
   const config = {
     headers: {
       Authorization: `Bearer ${authTokens ? authTokens.access : null}`,
@@ -25,7 +25,7 @@ function AdminComments() {
   }, []);
   let AllComments = () => {
     axios
-      .get(BASE_URL + "/admin_panel/all_comments/", config)
+      .get( "/admin_panel/all_comments/", config)
       .then((response) => {
         setCommentsData(response.data);
       });
@@ -33,7 +33,7 @@ function AdminComments() {
 
   let BlockOrUnblockComment = (id) => {
     axios
-      .put(BASE_URL + `/admin_panel/block_or_unblock_comment/${id}/`,config)
+      .put( `/admin_panel/block_or_unblock_comment/${id}/`,config)
       .then((response) => {
         AllComments();
       });

@@ -1,14 +1,12 @@
 import { Box, Button, Typography } from "@mui/material";
-import axios from "axios";
+import axios from '../../Utils/axios'
 import React, { useState } from "react";
 import CodeMirror from "@uiw/react-codemirror";
 import "./Compiler.css";
 import { python } from '@codemirror/lang-python'
 import { dracula } from '@uiw/codemirror-theme-dracula';
 
-
 function Compiler() {
-  const BASE_URL = "https://www.devhut.lappie.store";
   const [code, setCode] = useState('print("Hello world")');
   let [codeOutput, setCodeOutput] = useState();
 
@@ -22,7 +20,7 @@ function Compiler() {
   };
   let CompileCode = async () => {
     await axios
-      .post(BASE_URL + "/python_compiler/", {
+      .post( "/python_compiler/", {
         code_area: code,
       })
       .then((response) => {

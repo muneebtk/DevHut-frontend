@@ -16,13 +16,12 @@ import "./blogs.css";
 import AppContext from "../../Context/AppContext";
 import theme from "../../Utils/theme";
 import { useNavigate, useSearchParams } from "react-router-dom";
-import axios from "axios";
+import axios from '../../Utils/axios'
 import AuthContext from "../../Context/AuthContext";
 
 function Blogs() {
   let { allBlogs, singleBlogView } = useContext(AppContext);
   let { authTokens } = useContext(AuthContext);
-  const BASE_URL = "https://www.devhut.lappie.store";
   let [searchParams, setSearchParams] = useSearchParams();
   let [followingBlogsData, setFollowingBlogsData] = useState();
   const config = {
@@ -33,7 +32,7 @@ function Blogs() {
   const followingBlogs = searchParams.get("filter") === "following";
 
   let getFollowingBlogs = async () => {
-    axios.get(BASE_URL + "/following_blogs/", config).then((response) => {
+    axios.get( "/following_blogs/", config).then((response) => {
       if (response.status === 200) {
         setFollowingBlogsData(response.data);
       } else {

@@ -1,44 +1,43 @@
 import {
-    Table,
-    TableBody,
-    TableCell,
-    Paper,
-    TableContainer,
-    TableHead,
-    TableRow,
-    Button,
-  } from "@mui/material";
-  import axios from "axios";
-  import React, { useContext, useEffect, useState } from "react";
-  import AuthContext from "../../Context/AuthContext";
+  Table,
+  TableBody,
+  TableCell,
+  Paper,
+  TableContainer,
+  TableHead,
+  TableRow,
+  Button,
+} from "@mui/material";
+import axios from "../../Utils/axios";
+import React, { useContext, useEffect, useState } from "react";
+import AuthContext from "../../Context/AuthContext";
 
 function Staffs() {
-    const BASE_URL = "https://www.devhut.lappie.store";
-    let { authTokens } = useContext(AuthContext);
-    let [writersData, setWritersData] = useState();
-    const config = {
-      headers: {
-        Authorization: `Bearer ${authTokens ? authTokens.access : null}`,
-      },
-    };
+  let { authTokens } = useContext(AuthContext);
+  let [writersData, setWritersData] = useState();
+  const config = {
+    headers: {
+      Authorization: `Bearer ${authTokens ? authTokens.access : null}`,
+    },
+  };
 
-    let AllWriters = () => {
-        axios.get(BASE_URL + "/admin_panel/writers/", config).then((response) => {
-          setWritersData(response.data);
-        });
-      };
-      useEffect(() => {
-        AllWriters();
-      }, []);
-      let BlockOrUnblockUser = (id) => {
-        axios.patch(BASE_URL + `/admin_panel/writers/${id}/`).then((response) => {
-          AllWriters()
-        });
-      };
+  let AllWriters = () => {
+    axios.get("/admin_panel/writers/", config).then((response) => {
+      setWritersData(response.data);
+    });
+  };
+  useEffect(() => {
+    AllWriters();
+  }, []);
+  let BlockOrUnblockUser = (id) => {
+    axios.patch(`/admin_panel/writers/${id}/`).then((response) => {
+      AllWriters();
+    });
+  };
 
   return (
     <div>
-         <TableContainer component={Paper}>
+      <TableContainer component={Paper}>
         <Table sx={{ width: "100%" }} aria-label="simple table">
           <TableHead>
             <TableRow>
@@ -78,7 +77,7 @@ function Staffs() {
                     {row.is_staff ? "Yes" : "No"}
                   </TableCell>
                   <TableCell align="center">
-                    { row.is_active ? (
+                    {row.is_active ? (
                       <Button
                         onClick={() => BlockOrUnblockUser(row.id)}
                         color="error"
@@ -100,7 +99,7 @@ function Staffs() {
         </Table>
       </TableContainer>
     </div>
-  )
+  );
 }
 
-export default Staffs
+export default Staffs;

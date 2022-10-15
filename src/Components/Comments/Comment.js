@@ -18,8 +18,7 @@ import AuthContext from "../../Context/AuthContext";
 import Backdrop from "@mui/material/Backdrop";
 import Modal from "@mui/material/Modal";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
-
+import axios from '../../Utils/axios'
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 
 function Comment() {
@@ -51,7 +50,6 @@ function Comment() {
 
     let { singleBlogData, postComment, singleBlogView } = useContext(AppContext);
     let { user } = useContext(AuthContext);
-    const BASE_URL = "https://www.devhut.lappie.store";
     let navigate = useNavigate();
     let SubmitComment = (e) => {
         e.preventDefault();
@@ -63,7 +61,7 @@ function Comment() {
     };
     // fetch data of edit comment
     let GetComment = (id) => {
-        axios.get(BASE_URL + `/edit_or_delete_comment/${id}/`).then((response) => {
+        axios.get(`/edit_or_delete_comment/${id}/`).then((response) => {
         if (response.status === 200) {
             setEditCommentData(response.data.comment);
             setCommentId(response.data.id)
@@ -72,7 +70,7 @@ function Comment() {
     };
     // submit edited comment
     let SubmitEditedComment = (id)=>{
-        axios.put(BASE_URL+`/edit_or_delete_comment/${id}/`,{comment:editCommentData})
+        axios.put(`/edit_or_delete_comment/${id}/`,{comment:editCommentData})
         .then((response)=>{
             if (response.status===200){
                 setEditedCommentRes(response.data)
@@ -92,7 +90,7 @@ function Comment() {
     }
 
     let DeleteComment = (id)=>{
-        axios.delete(BASE_URL+`/edit_or_delete_comment/${id}/`)
+        axios.delete(`/edit_or_delete_comment/${id}/`)
         .then((response)=>{
             if (response.status===200){
                 setDeleteRes(response.data)
@@ -109,11 +107,9 @@ function Comment() {
         handleDelClose()
         setOkButton(false)
     }
-  
 
   return (
-    // <div>
-        <div>
+    <div>
       <Modal
         aria-labelledby="transition-modal-title"
         aria-describedby="transition-modal-description"

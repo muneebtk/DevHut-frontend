@@ -11,7 +11,7 @@ import ThumbUpOffAltIcon from "@mui/icons-material/ThumbUpOffAlt";
 import ThumbUpAltIcon from "@mui/icons-material/ThumbUpAlt";
 import AppContext from "../../Context/AppContext";
 import { useNavigate, useParams } from "react-router-dom";
-import axios from "axios";
+import axios from '../../Utils/axios'
 import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
 import "./blogView.css";
 import AuthContext from "../../Context/AuthContext";
@@ -29,7 +29,6 @@ function BlogView() {
     bgcolor: "background.paper",
     border: "2px solid #000",
     boxShadow: 24,
-
     p: 4,
   };
 
@@ -42,7 +41,6 @@ function BlogView() {
     headers: { Authorization: `Bearer ${authTokens && authTokens.access}` },
   };
 
-  const BASE_URL = "https://www.devhut.lappie.store";
   let {
     singleBlogData,
     singleBlogView,
@@ -65,7 +63,7 @@ function BlogView() {
   }, []);
 
   let LikeBlog = async (id) => {
-    axios.put(BASE_URL + `/blog_view/${id}/`, {}, config).then((response) => {
+    axios.put( `/blog_view/${id}/`, {}, config).then((response) => {
       if (response.status === 200) {
         setLikeRes(response.data);
       } else {
@@ -75,13 +73,19 @@ function BlogView() {
     })
   };
   let deleteBlog = () => {
+    console.log('delete blog');
     axios
-      .delete(BASE_URL + `/blogs/edit_blog/${x}/`, config)
+      .delete(`/blogs/edit_blog/${x}/`, config)
+      
       .then((response) => {
         if (response.status === 200) {
+          console.log('200');
+          
           setDeleteRes(response.data);
           setOkButton(true);
         } else {
+          console.log(response.status,'status');
+          console.log('error');
           setDeleteRes(
             "Something went wrong! Blog does not deleted,Please try again"
           );
@@ -242,9 +246,6 @@ function BlogView() {
             <Typography variant="caption">
               {singleBlogData.read_time} min read
             </Typography>
-            {/* <Typography variant="caption">
-              {singleBlogData.likes} Likes
-            </Typography> */}
 
             <div>
               <CardMedia
@@ -259,14 +260,6 @@ function BlogView() {
               <Typography sx={{ textIndent: "40px" }}>
                 {singleBlogData.content}
               </Typography>
-              {/* {singleBlogData.author.is_liked? */}
-              {/* <Box align='center' sx={{marginTop:'15px'}}>
-              <Button onClick={() => LikeBlog(singleBlogData.id)}>
-                <ThumbUpAltIcon fontSize="large" />
-              </Button>
-              <Typography>{likeRes?likeRes.count:singleBlogData.likes} Likes</Typography>
-            </Box>
-              : */}
               {likeRes !== undefined ? (
                 likeRes.status ? (
                   <Box align="center" sx={{ marginTop: "15px" }}>

@@ -9,10 +9,9 @@ import {
     TableRow,
     Button,
   } from "@mui/material";
-import axios from 'axios';
 import AuthContext from '../../Context/AuthContext';
 import { useNavigate } from 'react-router-dom';
-
+import axios from '../../Utils/axios'
 
 function AdminBlogList() {
   let navigate = useNavigate()
@@ -24,9 +23,8 @@ function AdminBlogList() {
           Authorization: `Bearer ${authTokens ? authTokens.access : null}`,
         },
       };
-      const BASE_URL = "https://www.devhut.lappie.store";
     let AllBlogsList = ()=>{
-        axios.get(BASE_URL+'/admin_panel/all_blogs/',config)
+        axios.get('/admin_panel/all_blogs/',config)
         .then ((response)=>{
             setAllBlogsData(response.data)
         })
@@ -36,12 +34,11 @@ function AdminBlogList() {
     }, [])
 
     let BlockOrUnblockBlog = (id) => {
-      axios.put(BASE_URL + `/admin_panel/block_or_unblock_blog/${id}/`).then((response) => {
+      axios.put( `/admin_panel/block_or_unblock_blog/${id}/`).then((response) => {
         AllBlogsList()
       });
     };
    
-    
   return (
     <div>
          <TableContainer component={Paper}>

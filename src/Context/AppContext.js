@@ -1,9 +1,9 @@
 import React ,{createContext, useState,useContext}from 'react'
-import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import AuthContext from './AuthContext';
+import axios from '../Utils/axios';
 
-const AppContext = createContext()
+const AppContext = createContext();
 
 export default AppContext;
 
@@ -11,15 +11,12 @@ export const AppProvider =({children})=> {
     const [allBlogs,setAllBlogs] = useState([])
     const [singleBlogData,setSingleBlogData] = useState()
     const navigate = useNavigate()
-    const BASE_URL = 'https://www.devhut.lappie.store'
-    
     const [prms,setPrms] = useState()
     const [authorProfileData,setAuthorProfileData] = useState()  
     const [userId,setUserId] = useState()
     let [loading,setLoading] = useState()
     const [followRes, setFollowRes] = useState();
     const [searchData,setSearchData] = useState()
-
     const {authTokens} = useContext(AuthContext);
     
     const config = {
@@ -27,17 +24,14 @@ export const AppProvider =({children})=> {
     };
 
     let blogs =async ()=>{
-        await axios.get(BASE_URL)
+        await axios.get()
         .then ((response)=>{
             setAllBlogs(response.data)
         })
     }
-
-    // let [isUser,setIsUser] = useState()
     let [isAuthor,setIsAuthor] = useState()
-
     let isAuthorUser=(id)=>{
-      axios.get(BASE_URL+`/blogs_author/${id}/`,config)
+      axios.get(`/blogs_author/${id}/`,config)
       .then((response)=>{
         if (response.status===200){
           setIsAuthor(response.data)
@@ -50,7 +44,7 @@ export const AppProvider =({children})=> {
     //single blog page view
     let singleBlogView =async (id)=>{
         setPrms(id)
-        await axios.get(BASE_URL+`/blog_view/${id}/`)
+        await axios.get(`/blog_view/${id}/`)
         .then ((response)=>{
             setSingleBlogData(response.data.serializer)
             isAuthorUser(response.data.id)
@@ -59,7 +53,7 @@ export const AppProvider =({children})=> {
     }
     // post comment on blogs
     let postComment = async(comment)=>{
-        await axios.post(BASE_URL+`/blog_view/${prms}/`,{
+        await axios.post(`/blog_view/${prms}/`,{
             comment:comment
         },config)
         .then ((response)=>{
@@ -75,7 +69,7 @@ export const AppProvider =({children})=> {
     let AuthorProfile =async (userid)=>{
         setLoading(true)
         setUserId(userid)
-        await axios.get(BASE_URL+`/author/profile/${userid}/`)
+        await axios.get(`/author/profile/${userid}/`)
         .then ((response)=>{
             if (response.status===200){
                 setLoading(false)
@@ -90,7 +84,7 @@ export const AppProvider =({children})=> {
 // follow an author
     let FollowAuthor = async (user_id) => {
         await axios
-          .post(BASE_URL +`/author/profile/${user_id}/`,{}, config)
+          .post(`/author/profile/${user_id}/`,{}, config)
           .then((response) => {
             if (response.status === 200) {
               setFollowRes(response.data);
@@ -103,7 +97,7 @@ export const AppProvider =({children})=> {
       };
     // search blogs 
     let searchBlogs = (key)=>{
-        axios.get(BASE_URL+`/search/?search=${key}`)
+        axios.get(`/search/?search=${key}`)
         .then((response)=>{
             if (response.status === 200){
                 setSearchData(response.data)
@@ -115,7 +109,7 @@ export const AppProvider =({children})=> {
 
       let [categoryData, setCategoryData] = useState();
       let CategoryView = (slug) => {
-        axios.get(BASE_URL + `/blogs/${slug}/`).then((response) => {
+        axios.get( `/blogs/${slug}/`).then((response) => {
           if (response.status === 200) {
             setCategoryData(response.data);
             navigate(`/blogs/${slug}/`)

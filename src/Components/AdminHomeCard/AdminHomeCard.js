@@ -18,7 +18,6 @@ function AdminHomeCard(props) {
           >
             <GroupIcon sx={{ color: "skyblue", fontSize: "60px" }} />
             <div style={{ color: "skyblue", fontSize: "60px" }}>
-              {/* {icon} */}
             </div>
             <Typography>
               {text}:{count}
