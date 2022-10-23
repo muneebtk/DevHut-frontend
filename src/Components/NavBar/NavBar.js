@@ -141,7 +141,7 @@ function NavBar() {
               />
               <button
                 className="search_button"
-                style={{ height: "30px", border: "none" }}
+                style={{ height: "30px", border: "none",cursor:'pointer' }}
               >
                 <SearchIcon />
               </button>

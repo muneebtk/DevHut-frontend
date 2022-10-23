@@ -123,8 +123,11 @@ function CategoryBlogs() {
               </Grid>
             ))
           ) : (
+            <div align='center'>
             <Typography mt>No blogs found!</Typography>
+            </div>
           )}
+          {!categoryData&&'no blogs found!'}
         </Grid>
       </div>
     </div>
