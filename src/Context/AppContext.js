@@ -59,6 +59,7 @@ export const AppProvider =({children})=> {
         .then ((response)=>{
             if (response.status === 200){
             }else{
+              
             }
         }).catch((error)=>{
           navigate('user/login/')

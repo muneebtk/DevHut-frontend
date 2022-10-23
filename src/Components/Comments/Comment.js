@@ -18,8 +18,8 @@ import AuthContext from "../../Context/AuthContext";
 import Backdrop from "@mui/material/Backdrop";
 import Modal from "@mui/material/Modal";
 import { useNavigate } from "react-router-dom";
-import axios from '../../Utils/axios'
-import CheckCircleIcon from '@mui/icons-material/CheckCircle';
+import axios from "../../Utils/axios";
+import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 
 function Comment() {
   const style = {
@@ -33,80 +33,88 @@ function Comment() {
     boxShadow: 24,
 
     p: 4,
-    };
+  };
 
-    const [open, setOpen] = React.useState(false);
-    const handleOpen = () => setOpen(true);
-    const handleClose = () => setOpen(false);
-    
-    // delete function modal
-    const [delOpen, setDelOpen] = React.useState(false);
-    const handleDelOpen = () => setDelOpen(true);
-    const handleDelClose = () => setDelOpen(false);
+  const [open, setOpen] = React.useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
 
-    let [editCommentData, setEditCommentData] = useState();
-    let [commentId,setCommentId] = useState()
-    let [editedCommentRes,setEditedCommentRes] = useState()
+  // delete function modal
+  const [delOpen, setDelOpen] = React.useState(false);
+  const handleDelOpen = () => setDelOpen(true);
+  const handleDelClose = () => setDelOpen(false);
 
-    let { singleBlogData, postComment, singleBlogView } = useContext(AppContext);
-    let { user } = useContext(AuthContext);
-    let navigate = useNavigate();
-    let SubmitComment = (e) => {
-        e.preventDefault();
-        if (e.target.comment.value === "") {
-        return false;
-        } else {
-        postComment(e.target.comment.value);
-        }
-    };
-    // fetch data of edit comment
-    let GetComment = (id) => {
-        axios.get(`/edit_or_delete_comment/${id}/`).then((response) => {
+  let [editCommentData, setEditCommentData] = useState();
+  let [commentId, setCommentId] = useState();
+  let [editedCommentRes, setEditedCommentRes] = useState();
+
+  let { singleBlogData, postComment, singleBlogView } = useContext(AppContext);
+  let { user,authTokens } = useContext(AuthContext);
+  let navigate = useNavigate();
+  let SubmitComment = (e) => {
+    e.preventDefault();
+    if (e.target.comment.value === "") {
+      return false;
+    } else {
+      postComment(e.target.comment.value);
+    }
+  };
+  // fetch data of edit comment
+  let GetComment = (id) => {
+    axios.get(`/edit_or_delete_comment/${id}/`).then((response) => {
+      if (response.status === 200) {
+        setEditCommentData(response.data.comment);
+        setCommentId(response.data.id);
+      }
+    });
+  };
+  // submit edited comment
+  let SubmitEditedComment = (id) => {
+    axios
+      .put(
+        `/edit_or_delete_comment/${id}/`,
+        { comment: editCommentData },
+        config
+      )
+      .then((response) => {
         if (response.status === 200) {
-            setEditCommentData(response.data.comment);
-            setCommentId(response.data.id)
+          setEditedCommentRes(response.data);
+          setOkButton(true);
         }
-        });
-    };
-    // submit edited comment
-    let SubmitEditedComment = (id)=>{
-        axios.put(`/edit_or_delete_comment/${id}/`,{comment:editCommentData})
-        .then((response)=>{
-            if (response.status===200){
-                setEditedCommentRes(response.data)
-                setOkButton(true)
-            }
-        })
-    }
-    let [deleteRes, setDeleteRes] = useState();
-    let [okButton, setOkButton] = useState();
-    let EditButton = (id) => {
-        handleOpen();
-        GetComment(id);
-    };
-    let clickOkButton = ()=>{
-        handleClose()
-        setOkButton(false)
-    }
+      });
+  };
+  let [deleteRes, setDeleteRes] = useState();
+  let [okButton, setOkButton] = useState();
+  let EditButton = (id) => {
+    handleOpen();
+    GetComment(id);
+  };
+  let clickOkButton = () => {
+    handleClose();
+    setOkButton(false);
+  };
+  const config = {
+    headers: { Authorization: `Bearer ${authTokens?authTokens.access:null}` }
+  };
 
-    let DeleteComment = (id)=>{
-        axios.delete(`/edit_or_delete_comment/${id}/`)
-        .then((response)=>{
-            if (response.status===200){
-                setDeleteRes(response.data)
-                setOkButton(true)
-            }
-        })
-    }
-    let [deleteCommentId,setDeleteCommetId] = useState()
-    let onDeleteButtonClick = (id)=>{
-        setDeleteCommetId(id)
-        setDelOpen(true)
-    }
-    let clickDelOkButton = ()=>{
-        handleDelClose()
-        setOkButton(false)
-    }
+
+  let DeleteComment = (id) => {
+    axios.delete(`/edit_or_delete_comment/${id}/`, config).then((response) => {
+      if (response.status === 200) {
+        setDeleteRes(response.data);
+        setOkButton(true);
+      }
+    });
+  };
+  let [deleteCommentId, setDeleteCommetId] = useState();
+  let onDeleteButtonClick = (id) => {
+    setDeleteCommetId(id);
+    setDelOpen(true);
+  };
+  let clickDelOkButton = () => {
+    handleDelClose();
+    setOkButton(false);
+  };
 
   return (
     <div>
@@ -125,7 +133,6 @@ function Comment() {
           <Box sx={style}>
             {!okButton ? (
               <div>
-        
                 <textarea
                   onChange={(e) => setEditCommentData(e.target.value)}
                   value={editCommentData}
@@ -136,12 +143,20 @@ function Comment() {
                   align="center"
                   sx={{ position: "relative", marginTop: "5px" }}
                 >
-                  <Button variant="contained" onClick={()=>SubmitEditedComment(commentId)}>post</Button>
+                  <Button
+                    variant="contained"
+                    onClick={() => SubmitEditedComment(commentId)}
+                  >
+                    post
+                  </Button>
                 </Box>
               </div>
             ) : (
               <div>
-                <CheckCircleIcon align='center' sx={{margin:'0 120px',color:'#20fc03',fontSize:'80px'}}/>
+                <CheckCircleIcon
+                  align="center"
+                  sx={{ margin: "0 120px", color: "#20fc03", fontSize: "80px" }}
+                />
                 <Typography
                   id="transition-modal-title"
                   variant="h6"
@@ -164,61 +179,76 @@ function Comment() {
         </Fade>
       </Modal>
 
-        
-        {/* delete modal */}
-        <div>
+      {/* delete modal */}
+      <div>
         <Modal
-        aria-labelledby="transition-modal-title"
-        aria-describedby="transition-modal-description"
-        open={delOpen}
-        onClose={handleDelClose}
-        closeAfterTransition
-        BackdropComponent={Backdrop}
-        BackdropProps={{
-          timeout: 500,
-        }}
+          aria-labelledby="transition-modal-title"
+          aria-describedby="transition-modal-description"
+          open={delOpen}
+          onClose={handleDelClose}
+          closeAfterTransition
+          BackdropComponent={Backdrop}
+          BackdropProps={{
+            timeout: 500,
+          }}
         >
-        <Fade in={delOpen}>
-          <Box sx={style}>
-            {!okButton ? (
-              <div>
-                <Typography align='center' id="transition-modal-title" variant="h5" component="h2">
-              Are you sure?
-            </Typography>
-            <Typography>Do you want to delete this comment?</Typography>
-                <Box
-                  align="center"
-                  sx={{ position: "relative", marginTop: "5px" }}
-                >
-                  <Button variant="contained" onClick={()=>DeleteComment(deleteCommentId)}>delete</Button>
-                </Box>
-              </div>
-            ) : (
-              <div>
-                <CheckCircleIcon align='center' sx={{margin:'0 120px',color:'#20fc03',fontSize:'80px'}}/>
-                <Typography
-                  id="transition-modal-title"
-                  variant="h6"
-                  component="h2"
-                >
-                  {deleteRes&&deleteRes.message}
-                </Typography>
-                <Box align="end" sx={{ position: "relative" }}>
-                  <Button
-                    onClick={clickDelOkButton}
-                    color="primary"
-                    variant="contained"
+          <Fade in={delOpen}>
+            <Box sx={style}>
+              {!okButton ? (
+                <div>
+                  <Typography
+                    align="center"
+                    id="transition-modal-title"
+                    variant="h5"
+                    component="h2"
                   >
-                    ok
-                  </Button>
-                </Box>
-              </div>
-            )}
-          </Box>
-        </Fade>
-      </Modal>
+                    Are you sure?
+                  </Typography>
+                  <Typography>Do you want to delete this comment?</Typography>
+                  <Box
+                    align="center"
+                    sx={{ position: "relative", marginTop: "5px" }}
+                  >
+                    <Button
+                      variant="contained"
+                      onClick={() => DeleteComment(deleteCommentId)}
+                    >
+                      delete
+                    </Button>
+                  </Box>
+                </div>
+              ) : (
+                <div>
+                  <CheckCircleIcon
+                    align="center"
+                    sx={{
+                      margin: "0 120px",
+                      color: "#20fc03",
+                      fontSize: "80px",
+                    }}
+                  />
+                  <Typography
+                    id="transition-modal-title"
+                    variant="h6"
+                    component="h2"
+                  >
+                    {deleteRes && deleteRes.message}
+                  </Typography>
+                  <Box align="end" sx={{ position: "relative" }}>
+                    <Button
+                      onClick={clickDelOkButton}
+                      color="primary"
+                      variant="contained"
+                    >
+                      ok
+                    </Button>
+                  </Box>
+                </div>
+              )}
+            </Box>
+          </Fade>
+        </Modal>
       </div>
-
 
       <Card elevation={0} className="singleBlogCard" variant="outlined">
         <Grid container spacing={3}>
@@ -240,7 +270,6 @@ function Comment() {
                   rows="4"
                 ></textarea>
                 <button
-                  style={{ marginLeft: "" }}
                   type="submit"
                   className="follow_button"
                 >
@@ -267,7 +296,7 @@ function Comment() {
                               sx={{ width: "35px", borderRadius: "50%" }}
                               component="img"
                               height="35"
-                              image={ obj.user.image}
+                              image={obj.user.image}
                               alt="Paella dish"
                             />
                           ) : (
@@ -282,11 +311,15 @@ function Comment() {
                                   <Button
                                     variant="outlined"
                                     size="small"
-                                    onClick={()=>EditButton(obj.id)}
+                                    onClick={() => EditButton(obj.id)}
                                   >
                                     edit
                                   </Button>
-                                  <Button variant="outlined" size="small" onClick={()=>onDeleteButtonClick(obj.id)}>
+                                  <Button
+                                    variant="outlined"
+                                    size="small"
+                                    onClick={() => onDeleteButtonClick(obj.id)}
+                                  >
                                     delete
                                   </Button>
                                 </div>
